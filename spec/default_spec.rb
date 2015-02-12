@@ -30,7 +30,6 @@ describe 'optoro_kafka::default' do
           resource = chef_run.execute('untar kafka binary')
           expect(resource).to notify('service[kafka]').to(:restart).delayed
         end
-
       end
     end
   end
