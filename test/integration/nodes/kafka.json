@@ -1,0 +1,13 @@
+{
+  "id": "test-kafka-002.optoro.io",
+  "kafka": {
+    "server.properties": {
+      "port": "8080"
+    }
+   },
+  "run_list": ["recipe[optoro_kafka]"],
+  "automatic": {
+    "ipaddress": "10.0.0.75",
+    "fqdn" : "test-kafka-002.optoro.io"
+  }
+}
