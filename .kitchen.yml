@@ -3,14 +3,13 @@ driver_plugin: vagrant
 driver_config:
   require_chef_omnibus: 11.16.4
   customize:
-    natdnshostresolver1: "off"
-    natdnsproxy1: "off"
+    natdnshostresolver1: "on"
     memory: 2048
-provisioner: 
+provisioner:
   name: chef_zero
   environments_path: test/environments
   client_rb:
-    environment: kitchen 
+    environment: kitchen
 
 platforms:
 - name: ubuntu-14.04
@@ -26,4 +25,8 @@ suites:
   - recipe[runit]
   - recipe[zookeeper]
   - recipe[zookeeper::service]
+  - recipe[optoro_kafka::test]
   - recipe[optoro_kafka::default]
+  attributes:
+    apt:
+      compile_time_update: true
