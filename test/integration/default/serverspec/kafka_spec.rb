@@ -76,7 +76,7 @@ describe 'kafka broker' do
     Kernel.system 'chmod 755 /tmp/env_jmx.sh'
 
     output = `su -l kafka -c "/tmp/env_jmx.sh 2> /dev/null"`
-    expect(output).to include('9_999')
+    expect(output).to include('9999')
   end
 
   it 'should be able to create a topic' do
@@ -87,7 +87,7 @@ describe 'kafka broker' do
     expect(create_output).to include('Created topic')
 
     list_output = `/opt/kafka/bin/kafka-topics.sh --list --zookeeper localhost:2181 2> /dev/null`
-    expect(list_output).to include('#{topic_name}')
+    expect(list_output).to include(topic_name)
   end
 
   it 'should be able to read/write from a topic' do
@@ -104,11 +104,11 @@ describe 'kafka broker' do
 
     # The producer is a command that allows a user to write input to the console as 'messages' to the topic, separated by new line characters
     # In this case we run the command and write the same message several times over 5s in an attempt to ensure the consumer saw the message
-    IO.popen("/opt/kafka/bin/kafka-console-producer.sh --topic #{topic} --broker-list localhost:6667 2> /dev/null") do |io|
+    IO.popen("/opt/kafka/bin/kafka-console-producer.sh --topic #{topic} --broker-list localhost:6667 2> /dev/null", mode='r+') do |io|
       writes = 5
       while writes > 0
         io.write message + '\n'
-        writes -= 1
+        writes -= 1 
         sleep 1
       end
       io.close_write

@@ -49,3 +49,17 @@ begin
   rescue Chef::Exceptions::ResourceNotFound
     Chef::Log.warn 'could not find service to override!'
 end
+=begin
+remote_file "{Chef::Config[:file_cache_path]}/#{default['kafka']['slf4j']['tarball']}" do 
+  source: default['kafka']['slfj4']['lib_jars']
+  not_if: { ::File.exists?"#{Chef::Config[:file_cache_path]}/#{default['kafka']['slf4j']['tarball']}" }
+end
+
+execute "untar slfj4 libs" do
+  cwd {Chef::Config[:file_cache_path]}
+  command "tar zxf #{Chef::Config[:file_cache_path]}/#{default['kafka']['slf4j']['tarball']}"
+  not_if do
+    File.exists? File.join node["kafka"]["base_dir"], kafkaFullDirectoryName
+  end
+end
+=end

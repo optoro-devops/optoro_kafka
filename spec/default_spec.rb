@@ -31,7 +31,7 @@ describe 'optoro_kafka::default' do
           expect(resource).to notify('service[kafka]').to(:restart).delayed
         end
 
-        end
       end
     end
   end
+end
