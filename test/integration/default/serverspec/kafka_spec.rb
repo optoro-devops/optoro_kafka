@@ -106,7 +106,7 @@ describe 'kafka broker' do
       writes = 5
       while writes > 0
         io.write message + '\n'
-        writes -= 1
+        writes -= 1 
         sleep 1
       end
       io.close_write
