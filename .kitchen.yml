@@ -5,11 +5,11 @@ driver_config:
   customize:
     natdnshostresolver1: "on"
     memory: 2048
-provisioner: 
+provisioner:
   name: chef_zero
   environments_path: test/environments
   client_rb:
-    environment: kitchen 
+    environment: kitchen
 
 platforms:
 - name: ubuntu-14.04
@@ -28,5 +28,5 @@ suites:
   - recipe[optoro_kafka::test]
   - recipe[optoro_kafka::default]
   attributes:
-    apt: 
+    apt:
       compile_time_update: true

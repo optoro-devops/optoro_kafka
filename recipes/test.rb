@@ -1,4 +1,4 @@
-node.set['fqdn'] = 'test-kafka-001.optoro.com'
+# node.set['fqdn'] = 'test-kafka-001.optoro.com'
 bash 'set hostname' do
   user 'root'
   code <<-EOH
