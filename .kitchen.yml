@@ -25,6 +25,7 @@ suites:
   - recipe[runit]
   - recipe[zookeeper]
   - recipe[zookeeper::service]
+  - recipe[optoro_kafka::test]
   - recipe[optoro_kafka::default]
   attributes:
     apt: 
