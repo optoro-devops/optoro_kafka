@@ -57,13 +57,10 @@ end
 
 describe 'kafka broker' do
 
-  it 'should own all files' do
-    # Ensure we reload ruby's usernames/groups
-    Etc.endgrent
-    Etc.endpwent
-    Dir['/opt/kafka/**/*'].each do |filePath|
-      expect(Etc.getpwuid(File.stat(filePath).uid).name).to eq('kafka')
-      expect(Etc.getgrgid(File.stat(filePath).gid).name).to eq('kafka')
+  Dir['/opt/kafka/**/*'].each do |filePath|
+    describe file(filePath) do
+      it { should be_owned_by 'kafka' }
+      it { should be_grouped_into 'kafka' }
     end
   end
 
