@@ -21,7 +21,7 @@ describe 'kafka offset monitor' do
   end
 
   it 'should be able to connect to offset monitor and get home page' do
-    expect(command("wget http://localhost:8080 2>&1 | grep response").stdout).to include('200 OK')
+    expect(command('wget http://localhost:8080 2>&1 | grep response').stdout).to include('200 OK')
   end
 
   it 'should be able to get monitoring details page for a topic' do
