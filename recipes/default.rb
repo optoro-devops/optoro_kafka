@@ -30,7 +30,7 @@ end
 # search for the kafka brokers in this chef environment and create an array
 # TODO: Support more than one cluster per chef environment
 if Chef::Config[:solo]
-  Chef::Log.warn("This recipe uses search. Chef Solo does not support search.")
+  Chef::Log.warn('This recipe uses search. Chef Solo does not support search.')
 else
   search(:node, "recipes:optoro_kafka AND chef_environment:#{node.chef_environment}").each do |n|
     node.default['kafka']['brokers'] << "#{n['fqdn']}:#{n['kafka']['server.properties']['port']}"
