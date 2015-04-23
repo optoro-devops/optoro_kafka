@@ -6,3 +6,5 @@ default['kafka']['lib_jars'] = ['http://search.maven.org/remotecontent?filepath=
 default['kafka']['zookeepers'] = ['localhost:2181']
 default['kafka']['env_vars']['KAFKA_HEAP_OPTS'] = '"-Xmx1G -Xms1G"'
 default['exhibitor']['base_domain'] = 'exhibitor.optoro.io'
+
+override['kafka']['server.properties']['log.dirs'] = '/kafka'

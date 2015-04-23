@@ -44,7 +44,7 @@ describe file('/etc/kafka') do
   it { should be_linked_to '/opt/kafka/config' }
 end
 
-describe file('/var/kafka') do
+describe file('/kafka') do
   it { should be_directory }
   it { should be_owned_by 'kafka' }
   it { should be_grouped_into 'kafka' }
