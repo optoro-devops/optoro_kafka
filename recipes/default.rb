@@ -1,13 +1,8 @@
+#<
+#  Configures and installs kafka.  We use the exhibitor api to get a list of zookeepers.
 #
-# Cookbook Name:: optoro_kafka
-# Recipe:: default
-#
-# Copyright (C) 2014 Zach Dunn
-#
-# All rights reserved - Do Not Redistribute
-#
-# ask the exhibitor in our environment for the zookeepers
 # TODO: support more than one cluster in a chef environment
+#>
 begin
   node.normal['kafka']['zookeepers'] = [
     zk_connect_str(

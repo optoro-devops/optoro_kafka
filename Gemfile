@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://gems.optoro.io'
 
 gem 'berkshelf', '~> 3.2.1'
 
@@ -23,4 +23,5 @@ group :development do
   gem 'rubocop', '~> 0.27.1'
   gem 'knife-solo', '0.4.2'
   gem 'knife-solo_data_bag', '1.1.0'
+  gem 'knife-cookbook-doc'
 end

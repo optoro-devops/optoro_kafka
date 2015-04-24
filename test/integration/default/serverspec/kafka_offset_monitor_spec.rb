@@ -37,13 +37,12 @@ describe 'kafka offset monitor' do
   it 'should be able to get monitoring details page for a consumer group' do
     # Generate a random topic and group
     topic_name = 'testNewTopic_' + rand(100_000).to_s
-    group_name = 'testNewGroup_' + rand(100_000).to_s
 
     expect(command("/opt/kafka/bin/kafka-topics.sh --create --topic #{topic_name} --partitions 1 --replication-factor 1 --zookeeper localhost:2181 2> /dev/null").stdout).to include('Created topic')
 
-    expect(command("/opt/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --group #{group_name} --whitelist #{topic_name} --consumer-timeout-ms 500 2>&1").stdout).to include('Consumed 0 messages')
+    expect(command("/opt/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --whitelist #{topic_name} --consumer.config /tmp/offsetmonitor-consumer-test.properties 2>&1").stdout).to include('Consumed 0 messages')
 
-    expect(command("wget http://localhost:8080/#/group/#{group_name} 2>&1 | grep response").stdout).to include('200 OK')
+    expect(command('wget http://localhost:8080/#/group/offsetmonitor-test-group 2>&1 | grep response').stdout).to include('200 OK')
   end
 
 end
