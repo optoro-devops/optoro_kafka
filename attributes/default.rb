@@ -8,3 +8,5 @@ default['kafka']['env_vars']['KAFKA_HEAP_OPTS'] = '"-Xmx1G -Xms1G"'
 default['exhibitor']['base_domain'] = 'exhibitor.optoro.io'
 
 override['kafka']['server.properties']['log.dirs'] = '/kafka'
+default['kafka']['scala_version'] = '2.10'
+default['kafka']['version'] = '0.8.2.1'
