@@ -4,3 +4,9 @@ HashSyntax:
   Enabled: false
 Next:
   Enabled: false
+IfUnlessModifier:
+  Enabled: false
+FileName:
+  Enabled: false
+LeadingCommentSpace:
+  Enabled: false
