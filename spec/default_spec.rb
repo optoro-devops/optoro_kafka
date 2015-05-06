@@ -6,11 +6,8 @@ describe 'optoro_kafka::default' do
 
         let(:chef_run) do
           ChefSpec::SoloRunner.new(platform: platform, version: version, log_level: :error) do |node|
-            env = Chef::Environment.new
-            env.name 'test-kitchen'
-            allow(node).to receive(:chef_environment).and_return(env.name)
-            allow(Chef::Environment).to receive(:load).and_return(env)
             node.set['lsb']['codename'] = value['codename']
+            node.set['optoro']['kafka_cluster'] = 'logstash-metrics'
           end.converge(described_recipe)
         end
 

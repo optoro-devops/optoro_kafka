@@ -30,3 +30,5 @@ suites:
   attributes:
     apt:
       compile_time_update: true
+    optoro:
+      kafka_cluster: test-logstash-metrics

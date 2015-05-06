@@ -7,7 +7,7 @@ begin
   node.normal['kafka']['zookeepers'] = [
     zk_connect_str(
       discover_zookeepers(
-        "http://#{node.chef_environment}-#{node['exhibitor']['base_domain']}:#{node['exhibitor']['cli']['port']}"
+        "http://#{node['optoro']['kafka_cluster']}-#{node['exhibitor']['base_domain']}:#{node['exhibitor']['cli']['port']}"
       )
     )
   ]
