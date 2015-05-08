@@ -24,10 +24,10 @@ Installs and configures Kafka
 * `node['kafka']['zookeepers']` -  Defaults to `[ ... ]`.
 * `node['kafka']['env_vars']['KAFKA_HEAP_OPTS']` -  Defaults to `"-Xmx1G -Xms1G"`.
 * `node['exhibitor']['base_domain']` -  Defaults to `exhibitor.optoro.io`.
-* `node['kafka']['server.properties']['log.dirs']` -  Defaults to `/kafka`.
 * `node['kafka']['scala_version']` -  Defaults to `2.10`.
 * `node['kafka']['version']` -  Defaults to `0.8.2.1`.
 * `node['optoro_kafka']['disks']` -  Defaults to `[ ... ]`.
+* `node['kafka']['server.properties']['log.dirs']` -  Defaults to `/kafka`.
 * `node['optoro_kafka']['disk_size']` -  Defaults to `1024`.
 
 # Recipes

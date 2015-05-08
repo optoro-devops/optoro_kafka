@@ -6,6 +6,7 @@
 include_recipe 'optoro_zfs'
 include_recipe 'aws'
 
+# Get a list of Zookeepers back from exhibitor
 begin
   exhibitor_endpoint = "http://#{node['optoro']['kafka_cluster']}-#{node['exhibitor']['base_domain']}:#{node['exhibitor']['cli']['port']}"
   node.normal['kafka']['zookeepers'] = [
