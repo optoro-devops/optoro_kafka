@@ -11,6 +11,8 @@ Installs and configures Kafka
 ## Cookbooks:
 
 * apt
+* aws
+* optoro_zfs
 * cerner_kafka (~> 1.1.0)
 * exhibitor (~> 0.4.0)
 * optoro_zookeeper
@@ -25,6 +27,8 @@ Installs and configures Kafka
 * `node['kafka']['server.properties']['log.dirs']` -  Defaults to `/kafka`.
 * `node['kafka']['scala_version']` -  Defaults to `2.10`.
 * `node['kafka']['version']` -  Defaults to `0.8.2.1`.
+* `node['optoro_kafka']['disks']` -  Defaults to `[ ... ]`.
+* `node['optoro_kafka']['disk_size']` -  Defaults to `1024`.
 
 # Recipes
 

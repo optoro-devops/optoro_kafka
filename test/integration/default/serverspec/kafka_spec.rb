@@ -50,6 +50,11 @@ describe file('/kafka') do
   it { should be_grouped_into 'kafka' }
 end
 
+describe zfs('kafka') do
+  it { should exist }
+  it { should have_property 'mountpoint' => '/kafka' }
+end
+
 describe file('/etc/kafka') do
   it { should be_directory }
   it { should be_linked_to '/opt/kafka/config' }

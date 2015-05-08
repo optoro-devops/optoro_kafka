@@ -8,6 +8,8 @@ version '0.0.5'
 supports 'ubuntu', '= 14.04'
 
 depends 'apt'
+depends 'aws'
+depends 'optoro_zfs'
 depends 'cerner_kafka', '~> 1.1.0'
 depends 'exhibitor', '~> 0.4.0'
 depends 'optoro_zookeeper'

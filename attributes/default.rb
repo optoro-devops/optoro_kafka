@@ -10,3 +10,5 @@ default['exhibitor']['base_domain'] = 'exhibitor.optoro.io'
 override['kafka']['server.properties']['log.dirs'] = '/kafka'
 default['kafka']['scala_version'] = '2.10'
 default['kafka']['version'] = '0.8.2.1'
+default['optoro_kafka']['disks'] = ['/dev/sdf']
+default['optoro_kafka']['disk_size'] = 1024

@@ -11,6 +11,12 @@ describe 'optoro_kafka::default' do
           end.converge(described_recipe)
         end
 
+        it 'includes optoro_zfs' do
+          expect(chef_run).to include_recipe('optoro_zfs')
+        end
+        it 'includes aws' do
+          expect(chef_run).to include_recipe('aws')
+        end
         it 'includes apt' do
           expect(chef_run).to include_recipe('apt')
         end
