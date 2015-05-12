@@ -7,6 +7,9 @@ default['kafka']['zookeepers'] = ['localhost:2181']
 default['kafka']['env_vars']['KAFKA_HEAP_OPTS'] = '"-Xmx1G -Xms1G"'
 default['exhibitor']['base_domain'] = 'exhibitor.optoro.io'
 
-override['kafka']['server.properties']['log.dirs'] = '/kafka'
 default['kafka']['scala_version'] = '2.10'
 default['kafka']['version'] = '0.8.2.1'
+# If in EC2, we will mount a ZFS file system as a RAID0
+default['optoro_kafka']['disks'] = ['/dev/sdf']
+override['kafka']['server.properties']['log.dirs'] = '/kafka'
+default['optoro_kafka']['disk_size'] = 1024
