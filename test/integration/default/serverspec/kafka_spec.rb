@@ -27,6 +27,24 @@ describe file('/opt/kafka/libs/metrics-logback-3.1.0.jar') do
   it { should be_grouped_into 'kafka' }
 end
 
+describe file('/opt/kafka/libs/metrics-core-2.2.0.jar') do
+  it { should be_file }
+  it { should be_owned_by 'kafka' }
+  it { should be_grouped_into 'kafka' }
+end
+
+describe file('/opt/kafka/libs/metrics-graphite-2.2.0.jar') do
+  it { should be_file }
+  it { should be_owned_by 'kafka' }
+  it { should be_grouped_into 'kafka' }
+end
+
+describe file('/opt/kafka/libs/kafka-graphite-1.0.0.jar') do
+  it { should be_file }
+  it { should be_owned_by 'kafka' }
+  it { should be_grouped_into 'kafka' }
+end
+
 describe file('/opt/kafka/config/server.properties') do
   it { should be_file }
   it { should be_owned_by 'kafka' }

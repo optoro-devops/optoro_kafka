@@ -1,6 +1,7 @@
 source 'http://gems.optoro.io'
 
 gem 'berkshelf', '~> 3.2.1'
+gem 'right_aws'
 
 group :integration do
   gem 'test-kitchen', '~> 1.3.0'
