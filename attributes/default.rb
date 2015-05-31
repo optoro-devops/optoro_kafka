@@ -21,3 +21,4 @@ default['kafka']['server.properties']['kafka.graphite.metrics.host'] = 'localhos
 default['kafka']['server.properties']['kafka.graphite.metrics.port'] = '6008'
 default['kafka']['server.properties']['kafka.graphite.metrics.group'] = "#{node['fqdn']}.kafka"
 default['kafka']['server.properties']['kafka.graphite.metrics.reporter.enabled'] = 'true'
+default['optoro_zfs']['zfs_arc_max'] = (node['memory']['total'].to_i * 0.05 * 1024).round(0).to_s
