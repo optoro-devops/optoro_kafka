@@ -29,6 +29,13 @@ Installs and configures Kafka
 * `node['optoro_kafka']['disks']` -  Defaults to `[ ... ]`.
 * `node['kafka']['server.properties']['log.dirs']` -  Defaults to `/kafka`.
 * `node['optoro_kafka']['disk_size']` -  Defaults to `1024`.
+* `node['kafka']['server.properties']['kafka.metrics.reporters']` -  Defaults to `com.criteo.kafka.KafkaGraphiteMetricsReporter`.
+* `node['kafka']['server.properties']['kafka.graphite.metrics.host']` -  Defaults to `localhost`.
+* `node['kafka']['server.properties']['kafka.graphite.metrics.port']` -  Defaults to `6008`.
+* `node['kafka']['server.properties']['kafka.graphite.metrics.group']` -  Defaults to `#{node['fqdn']}.kafka`.
+* `node['kafka']['server.properties']['kafka.graphite.metrics.reporter.enabled']` -  Defaults to `true`.
+* `node['optoro_zfs']['zfs_arc_max']` -  Defaults to `(node['memory']['total'].to_i * 0.05 * 1024).round(0).to_s`.
+* `node['kafka']['offset_monitor']['refresh']` -  Defaults to `1.minutes`.
 
 # Recipes
 
