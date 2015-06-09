@@ -3,8 +3,6 @@
 #
 # TODO: support more than one cluster in a chef environment
 #>
-include_recipe 'optoro_zfs'
-include_recipe 'aws'
 
 # Get a list of Zookeepers back from exhibitor
 begin
@@ -19,31 +17,9 @@ end
 
 node.default['kafka']['server.properties']['broker.id'] = node['fqdn'].scan(/\d+/).first.to_i
 
-if node['ec2']
-  node['optoro_kafka']['disks'].each do |disk, index|
-    aws_ebs_volume "kafka-#{index}" do
-      size node['optoro_kafka']['disk_size']
-      device disk
-      action [:create, :attach]
-    end
-  end
-
-  # make our disk names compatible with what ubuntu sees.
-  # e.g. /dev/sdf will become /dev/xvdf
-  virtual_disks = node['optoro_kafka']['disks'].map { |disk| disk.sub('/dev/s', '/dev/xv') }
-
-  zpool 'kafka' do
-    disks virtual_disks
-    force true
-  end
-
-  zfs 'kafka' do
-    mountpoint node['kafka']['server.properties']['log.dirs']
-    atime 'off'
-    compression 'lz4'
-  end
-end
-
+include_recipe 'aws'
+include_recipe 'optoro_kafka::zfs_on_ebs' if node['optoro_kafka']['zfs_on_ebs'] == true
+include_recipe 'optoro_kafka::log_devices' if node['optoro_kafka']['log']['devices'].is_a?(Hash)
 include_recipe 'apt'
 include_recipe 'exhibitor'
 include_recipe 'cerner_kafka'

@@ -62,15 +62,28 @@ describe file('/etc/kafka') do
   it { should be_linked_to '/opt/kafka/config' }
 end
 
-describe file('/kafka') do
+describe file('/kafka/disk1/log') do
   it { should be_directory }
   it { should be_owned_by 'kafka' }
   it { should be_grouped_into 'kafka' }
 end
 
-describe zfs('kafka') do
-  it { should exist }
-  it { should have_property 'mountpoint' => '/kafka' }
+describe file('/kafka/disk2/log') do
+  it { should be_directory }
+  it { should be_owned_by 'kafka' }
+  it { should be_grouped_into 'kafka' }
+end
+
+describe file('/kafka/disk3/log') do
+  it { should be_directory }
+  it { should be_owned_by 'kafka' }
+  it { should be_grouped_into 'kafka' }
+end
+
+describe file('/kafka/disk4/log') do
+  it { should be_directory }
+  it { should be_owned_by 'kafka' }
+  it { should be_grouped_into 'kafka' }
 end
 
 describe file('/etc/kafka') do
