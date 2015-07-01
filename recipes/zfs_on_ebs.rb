@@ -5,7 +5,7 @@
 include_recipe 'optoro_zfs'
 
 if node['ec2']
-  node['optoro_kafka']['disks'].each do |disk, index|
+  node['optoro_kafka']['disks'].each_with_index do |disk, index|
     aws_ebs_volume "kafka-#{index}" do
       size node['optoro_kafka']['disk_size']
       device disk
