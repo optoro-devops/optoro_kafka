@@ -18,8 +18,11 @@ end
 node.default['kafka']['server.properties']['broker.id'] = node['fqdn'].scan(/\d+/).first.to_i
 
 include_recipe 'aws'
-include_recipe 'optoro_kafka::zfs_on_ebs' if node['optoro_kafka']['zfs_on_ebs'] == true
-include_recipe 'optoro_kafka::log_devices' if node['optoro_kafka']['log']['devices'].is_a?(Hash)
+if node['optoro_kafka']['zfs_on_ebs'] == true
+  include_recipe 'optoro_kafka::zfs_on_ebs'
+else
+  include_recipe 'optoro_kafka::log_devices' if node['optoro_kafka']['log']['devices'].is_a?(Hash)
+end
 include_recipe 'apt'
 include_recipe 'exhibitor'
 include_recipe 'cerner_kafka'
