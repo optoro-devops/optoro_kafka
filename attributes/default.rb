@@ -17,8 +17,8 @@ default['kafka']['server.properties']['kafka.graphite.metrics.host'] = 'localhos
 default['kafka']['server.properties']['kafka.graphite.metrics.port'] = '6008'
 default['kafka']['server.properties']['kafka.graphite.metrics.group'] = "#{node['fqdn']}.kafka"
 default['kafka']['server.properties']['kafka.graphite.metrics.reporter.enabled'] = 'true'
+default['kafka']['server.properties']['advertised.host.name'] = node['fqdn']
 default['kafka']['offset_monitor']['refresh'] = '1.minutes'
-override['kafka']['server.properties']['log.dirs'] = '/kafka/disk1/log,/kafka/disk2/log,/kafka/disk3/log,/kafka/disk4/log'
 
 # Exhibitor domain
 default['exhibitor']['base_domain'] = 'exhibitor.optoro.io'
