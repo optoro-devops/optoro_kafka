@@ -16,6 +16,7 @@ describe 'optoro_kafka::default' do
           chef_run.converge(described_recipe)
           expect(chef_run).to include_recipe('optoro_zfs')
           expect(chef_run).to include_recipe('optoro_kafka::zfs_on_ebs')
+          expect(chef_run).to_not include_recipe('optoro_kafka::log_devices')
         end
         it 'includes aws' do
           expect(chef_run).to include_recipe('aws')
@@ -43,10 +44,10 @@ describe 'optoro_kafka::default' do
           expect(chef_run).to create_directory('/kafka/disk4').with(user: 'kafka', group: 'kafka')
         end
         #it 'should create 4 aws_ebs_volumes' do
-        #  expect(chef_run).to create_aws_ebs_volume('/kafka/disk1')
-        #  expect(chef_run).to create_aws_ebs_volume('/kafka/disk2')
-        #  expect(chef_run).to create_aws_ebs_volume('/kafka/disk3')
-        #  expect(chef_run).to create_aws_ebs_volume('/kafka/disk4')
+        #expect(chef_run).to create_aws_ebs_volume('/kafka/disk1')
+        #expect(chef_run).to create_aws_ebs_volume('/kafka/disk2')
+        #expect(chef_run).to create_aws_ebs_volume('/kafka/disk3')
+        #expect(chef_run).to create_aws_ebs_volume('/kafka/disk4')
         #end
       end
     end

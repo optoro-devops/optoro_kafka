@@ -32,3 +32,20 @@ suites:
       compile_time_update: true
     optoro:
       kafka_cluster: test-logstash-metrics
+- name: zfs
+  encrypted_data_bag_secret_key_path: "test/integration/encrypted_data_bag_secret"
+  run_list:
+  - recipe[apt]
+  - recipe[runit]
+  - recipe[zookeeper]
+  - recipe[zookeeper::service]
+  - recipe[optoro_kafka::test]
+  - recipe[optoro_kafka::default]
+  attributes:
+    apt:
+      compile_time_update: true
+    optoro:
+      kafka_cluster: test-logstash-metrics
+    optoro_kafka:
+      zfs_on_ebs: true
+      disks: ['/dev/sdf','/dev/sdg']
