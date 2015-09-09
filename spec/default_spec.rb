@@ -38,10 +38,10 @@ describe 'optoro_kafka::default' do
           expect(resource).to notify('service[kafka]').to(:restart).delayed
         end
         it 'should create 4 directories for mountpoints' do
-          expect(chef_run).to create_directory('/kafka/disk1').with(user: 'kafka', group: 'kafka')
-          expect(chef_run).to create_directory('/kafka/disk2').with(user: 'kafka', group: 'kafka')
-          expect(chef_run).to create_directory('/kafka/disk3').with(user: 'kafka', group: 'kafka')
-          expect(chef_run).to create_directory('/kafka/disk4').with(user: 'kafka', group: 'kafka')
+          expect(chef_run).to create_directory('/kafka/disk1')
+          expect(chef_run).to create_directory('/kafka/disk2')
+          expect(chef_run).to create_directory('/kafka/disk3')
+          expect(chef_run).to create_directory('/kafka/disk4')
         end
         #it 'should create 4 aws_ebs_volumes' do
         #expect(chef_run).to create_aws_ebs_volume('/kafka/disk1')

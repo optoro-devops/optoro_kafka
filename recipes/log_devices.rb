@@ -21,8 +21,6 @@ node['optoro_kafka']['log']['devices'].each do |device, params|
 
   # Create directory with proper permissions
   directory params[:mount_path] do
-    owner node['kafka']['user']
-    group node['kafka']['group']
     mode 0755
     recursive true
   end
