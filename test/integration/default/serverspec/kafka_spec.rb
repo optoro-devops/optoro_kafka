@@ -136,7 +136,7 @@ describe 'kafka broker' do
     Kernel.system "/opt/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --whitelist #{topic} >> /tmp/consumer.out 2>&1 &"
 
     # Delay producing of messages so the consumer has time to start up
-    sleep(30)
+    sleep(60)
 
     # The producer is a command that allows a user to write input to the console as 'messages' to the topic, separated by new line characters
     # In this case we run the command and write the same message several times over 5s in an attempt to ensure the consumer saw the message
