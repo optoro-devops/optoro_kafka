@@ -2,6 +2,8 @@
 
 require 'spec_helper'
 
+sleep(60)
+
 describe service('kafka-offset-monitor') do
   it { should be_running }
 end

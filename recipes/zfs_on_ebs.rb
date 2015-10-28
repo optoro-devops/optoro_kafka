@@ -26,3 +26,8 @@ zfs 'kafka' do
   atime 'off'
   compression 'lz4'
 end
+
+directory node['kafka']['server.properties']['log.dirs'] do
+  owner 'kafka'
+  group 'kafka'
+end
