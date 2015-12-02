@@ -4,6 +4,20 @@
 
 include_recipe 'optoro_zfs'
 
+# Creating kafka user for ZFS partition
+group node['kafka']['group'] do
+  action :create
+end
+
+user node['kafka']['user'] do
+  comment 'Kafka user'
+  uid node['kafka']['uid'] if node['kafka']['uid']
+  gid node['kafka']['group']
+  shell '/bin/bash'
+  home "/home/#{node['kafka']['user']}"
+  supports :manage_home => true
+end
+
 node['optoro_kafka']['disks'].each_with_index do |disk, index|
   aws_ebs_volume "kafka-#{index}" do
     size node['optoro_kafka']['disk_size']
