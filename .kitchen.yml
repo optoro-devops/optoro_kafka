@@ -3,7 +3,7 @@
 # $AWS_SSH_KEY_ID to specify what key to use
 driver:
   name: ec2
-  require_chef_omnibus: 11.16.4
+  require_chef_omnibus: 12.6.0
   security_group_ids: ["sg-68ce330c"]
   subnet_id: subnet-2f5f9f04
   region: us-east-1
@@ -56,3 +56,23 @@ suites:
       optoro_kafka:
         zfs_on_ebs: true
         disks: ['/dev/sdf','/dev/sdg']
+
+  - name: consul
+    encrypted_data_bag_secret_key_path: "test/integration/encrypted_data_bag_secret"
+    run_list:
+    - recipe[apt]
+    - recipe[runit]
+    - recipe[zookeeper]
+    - recipe[zookeeper::service]
+    - recipe[optoro_kafka::test]
+    - recipe[optoro_kafka::default]
+    attributes:
+      optoro_consul:
+        register_consul_service: true
+        service:
+          checks:
+            -  { script: 'service kafka status', interval: '5s' }
+      apt:
+        compile_time_update: true
+      optoro:
+        kafka_cluster: test-logstash-metrics

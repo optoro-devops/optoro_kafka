@@ -79,9 +79,8 @@ describe zfs('kafka') do
 end
 
 describe 'kafka broker' do
-
-  Dir['/opt/kafka/**/*'].each do |filePath|
-    describe file(filePath) do
+  Dir['/opt/kafka/**/*'].each do |file_path|
+    describe file(file_path) do
       it { should be_owned_by 'kafka' }
       it { should be_grouped_into 'kafka' }
     end
@@ -124,17 +123,13 @@ describe 'kafka broker' do
 
     # The producer is a command that allows a user to write input to the console as 'messages' to the topic, separated by new line characters
     # In this case we run the command and write the same message several times over 5s in an attempt to ensure the consumer saw the message
-    # rubocop:disable UselessAssignment
-    IO.popen("/opt/kafka/bin/kafka-console-producer.sh --topic #{topic} --broker-list localhost:6667 2> /dev/null", mode = 'r+') do |io|
-      writes = 5
-      while writes > 0
+    IO.popen("/opt/kafka/bin/kafka-console-producer.sh --topic #{topic} --broker-list localhost:6667 2> /dev/null", 'r+') do |io|
+      5.times do
         io.write message + '\n'
-        writes -= 1
         sleep 1
       end
       io.close_write
     end
-    # rubocop:enable UselessAssignment
 
     # Ensure consumer processes are stopped
     consumer_pids = `ps -ef | grep kafka.consumer.ConsoleConsumer | grep -v grep | awk '{print $2}'`
@@ -147,7 +142,5 @@ describe 'kafka broker' do
 
     # Verify the consumer saw at least 1 message
     expect(consumer_output).to include(message)
-
   end
-
 end
