@@ -7,7 +7,6 @@
 include_recipe 'optoro_kafka::create_ebs'
 
 node['optoro_kafka']['log']['devices'].each do |device, params|
-
   # Format volume if format command is provided and volume is unformatted
   bash "Format device: #{device}" do
     command  = "#{params[:format_command]} #{device}"
@@ -39,5 +38,4 @@ node['optoro_kafka']['log']['devices'].each do |device, params|
       notifies :restart, 'service[kafka]', :delayed unless node['optoro_kafka']['skip_restart']
     end
   end
-
 end

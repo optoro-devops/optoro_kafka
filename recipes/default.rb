@@ -41,3 +41,5 @@ begin
 rescue Chef::Exceptions::ResourceNotFound
   Chef::Log.warn 'could not find service to override!'
 end
+
+include_recipe 'optoro_kafka::consul' if node['optoro_consul']['register_consul_service']
