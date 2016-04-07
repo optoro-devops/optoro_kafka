@@ -62,39 +62,14 @@ describe file('/etc/kafka') do
   it { should be_linked_to '/opt/kafka/config' }
 end
 
-describe file('/kafka/disk1/log') do
-  it { should be_directory }
-  it { should be_owned_by 'kafka' }
-  it { should be_grouped_into 'kafka' }
-end
-
-describe file('/kafka/disk2/log') do
-  it { should be_directory }
-  it { should be_owned_by 'kafka' }
-  it { should be_grouped_into 'kafka' }
-end
-
-describe file('/kafka/disk3/log') do
-  it { should be_directory }
-  it { should be_owned_by 'kafka' }
-  it { should be_grouped_into 'kafka' }
-end
-
-describe file('/kafka/disk4/log') do
-  it { should be_directory }
-  it { should be_owned_by 'kafka' }
-  it { should be_grouped_into 'kafka' }
-end
-
 describe file('/etc/kafka') do
   it { should be_directory }
   it { should be_linked_to '/opt/kafka/config' }
 end
 
 describe 'kafka broker' do
-
-  Dir['/opt/kafka/**/*'].each do |filePath|
-    describe file(filePath) do
+  Dir['/opt/kafka/**/*'].each do |file_path|
+    describe file(file_path) do
       it { should be_owned_by 'kafka' }
       it { should be_grouped_into 'kafka' }
     end
@@ -163,7 +138,5 @@ describe 'kafka broker' do
 
     # Verify the consumer saw at least 1 message
     expect(consumer_output).to include(message)
-
   end
-
 end

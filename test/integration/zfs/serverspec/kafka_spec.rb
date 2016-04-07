@@ -79,9 +79,8 @@ describe zfs('kafka') do
 end
 
 describe 'kafka broker' do
-
-  Dir['/opt/kafka/**/*'].each do |filePath|
-    describe file(filePath) do
+  Dir['/opt/kafka/**/*'].each do |file_path|
+    describe file(file_path) do
       it { should be_owned_by 'kafka' }
       it { should be_grouped_into 'kafka' }
     end
@@ -147,7 +146,5 @@ describe 'kafka broker' do
 
     # Verify the consumer saw at least 1 message
     expect(consumer_output).to include(message)
-
   end
-
 end

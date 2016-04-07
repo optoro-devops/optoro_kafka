@@ -10,3 +10,6 @@ FileName:
   Enabled: false
 LeadingCommentSpace:
   Enabled: false
+AllCops:
+  Exclude:
+    - Guardfile
