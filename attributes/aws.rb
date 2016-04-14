@@ -10,7 +10,7 @@ if node['ec2']
       'fs_check_command' => 'dumpe2fs',
       'ebs' => {
         'device' => '/dev/sdf',
-        'size' => 250,
+        'size' => 500,
         'delete_on_termination' => true,
         'type' => 'standard'
       }
@@ -23,7 +23,7 @@ if node['ec2']
       'fs_check_command' => 'dumpe2fs',
       'ebs' => {
         'device' => '/dev/sdg',
-        'size' => 250,
+        'size' => 500,
         'delete_on_termination' => true,
         'type' => 'standard'
       }
@@ -36,7 +36,7 @@ if node['ec2']
       'fs_check_command' => 'dumpe2fs',
       'ebs' => {
         'device' => '/dev/sdh',
-        'size' => 250,
+        'size' => 500,
         'delete_on_termination' => true,
         'type' => 'standard'
       }
@@ -49,7 +49,7 @@ if node['ec2']
       'fs_check_command' => 'dumpe2fs',
       'ebs' => {
         'device' => '/dev/sdi',
-        'size' => 250,
+        'size' => 500,
         'delete_on_termination' => true,
         'type' => 'standard'
       }
