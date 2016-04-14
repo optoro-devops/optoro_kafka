@@ -12,9 +12,8 @@ describe port(8080) do
 end
 
 describe 'kafka offset monitor' do
-
-  Dir['/opt/kafka-offset-monitor/**/*'].each do |filePath|
-    describe file(filePath) do
+  Dir['/opt/kafka-offset-monitor/**/*'].each do |file_path|
+    describe file(file_path) do
       it { should be_owned_by 'kafka' }
       it { should be_grouped_into 'kafka' }
     end
@@ -44,5 +43,4 @@ describe 'kafka offset monitor' do
 
     expect(command('wget http://localhost:8080/#/group/offsetmonitor-test-group 2>&1 | grep response').stdout).to include('200 OK')
   end
-
 end
