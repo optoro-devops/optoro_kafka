@@ -17,10 +17,20 @@ end
 
 node.default['kafka']['server.properties']['broker.id'] = node['fqdn'].scan(/\d+/).first.to_i
 
-if node['optoro_kafka']['zfs_on_ebs'] && node['ec2']
-  node.override['kafka']['server.properties']['log.dirs'] = '/kafka'
-  include_recipe 'optoro_kafka::aws'
+group node['kafka']['group'] do
+  action :create
 end
+
+user node['kafka']['user'] do
+  comment 'Kafka user'
+  uid node['kafka']['uid'] if node['kafka']['uid']
+  gid node['kafka']['group']
+  shell '/bin/bash'
+  home "/home/#{node['kafka']['user']}"
+  supports :manage_home => true
+end
+
+include_recipe 'optoro_kafka::aws' if node['ec2']
 
 include_recipe 'apt'
 include_recipe 'exhibitor'

@@ -23,7 +23,6 @@ describe 'optoro_kafka::default' do
           expect(chef_run).to include_recipe('cerner_kafka::offset_monitor')
         end
         it 'includes optoro_kafka::aws when running on EC2' do
-          chef_run.node.set['optoro_kafka']['zfs_on_ebs'] = true
           chef_run.node.automatic['ec2'] = true
           chef_run.converge(described_recipe)
           expect(chef_run).to include_recipe('optoro_kafka::aws')
