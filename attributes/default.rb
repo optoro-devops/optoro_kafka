@@ -24,10 +24,8 @@ default['kafka']['offset_monitor']['refresh'] = '1.minutes'
 default['exhibitor']['base_domain'] = 'exhibitor.optoro.io'
 
 # If in EC2, we will mount a ZFS file system as a RAID0
-default['optoro_kafka']['zfs_on_ebs'] = false
 default['optoro_kafka']['disks'] = ['/dev/sdf']
 default['optoro_kafka']['disk_size'] = 1024
 default['optoro_kafka']['skip_restart'] = false
 
-# Optoro_ZFS defaults, only used if we set "default['optoro_kafka']['zfs_on_ebs'] = true"
 default['optoro_zfs']['zfs_arc_max'] = (node['memory']['total'].to_i * 0.05 * 1024).round(0).to_s
