@@ -32,6 +32,12 @@ end
 
 include_recipe 'optoro_kafka::aws' if node['ec2']
 
+include_recipe 'ulimit'
+
+user_ulimit 'kafka' do
+  filehandle_limit '65535'
+end
+
 include_recipe 'apt'
 include_recipe 'exhibitor'
 include_recipe 'cerner_kafka'

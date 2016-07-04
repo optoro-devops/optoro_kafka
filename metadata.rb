@@ -4,7 +4,7 @@ maintainer_email 'devops@optoro.com'
 license 'MIT'
 description 'Installs and configures Kafka'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '0.1.12'
+version '0.1.13'
 supports 'ubuntu', '= 14.04'
 
 depends 'apt'
@@ -13,6 +13,7 @@ depends 'optoro_zfs'
 depends 'cerner_kafka', '~> 1.1.0'
 depends 'exhibitor', '~> 0.4.0'
 depends 'optoro_zookeeper'
+depends 'ulimit'
 
 provides 'optoro_kafka::default'
 provides 'optoro_kafka::test'
