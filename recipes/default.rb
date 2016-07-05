@@ -52,3 +52,7 @@ begin
 rescue Chef::Exceptions::ResourceNotFound
   Chef::Log.warn 'could not find service to override!'
 end
+
+file '/opt/kafka/libs/kafka-graphite-1.0.0.jar' do
+  action :delete
+end

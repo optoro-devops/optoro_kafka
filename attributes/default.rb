@@ -5,7 +5,7 @@ default['kafka']['brokers'] = [node['fqdn']]
 default['kafka']['lib_jars'] = ['http://search.maven.org/remotecontent?filepath=io/dropwizard/metrics/metrics-logback/3.1.0/metrics-logback-3.1.0.jar',
                                 'https://repo1.maven.org/maven2/org/slf4j/slf4j-nop/1.7.7/slf4j-nop-1.7.7.jar',
                                 'https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar',
-                                'https://s3.amazonaws.com/optoro-packages/kafka-graphite-1.0.0.jar',
+                                'https://s3.amazonaws.com/optoro-packages/kafka-graphite-1.0.4.jar',
                                 'https://s3.amazonaws.com/optoro-packages/metrics-core-2.2.0.jar',
                                 'https://s3.amazonaws.com/optoro-packages/metrics-graphite-2.2.0.jar']
 default['kafka']['zookeepers'] = ['localhost:2181']
