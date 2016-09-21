@@ -18,6 +18,7 @@ default['kafka']['server.properties']['kafka.graphite.metrics.port'] = '6008'
 default['kafka']['server.properties']['kafka.graphite.metrics.group'] = "#{node['fqdn']}.kafka"
 default['kafka']['server.properties']['kafka.graphite.metrics.reporter.enabled'] = 'true'
 default['kafka']['server.properties']['advertised.host.name'] = node['fqdn']
+default['kafka']['server.properties']['port'] = '6667'
 default['kafka']['offset_monitor']['refresh'] = '1.minutes'
 
 # Exhibitor domain

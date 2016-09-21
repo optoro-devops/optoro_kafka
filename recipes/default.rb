@@ -42,6 +42,7 @@ include_recipe 'apt'
 include_recipe 'exhibitor'
 include_recipe 'cerner_kafka'
 include_recipe 'cerner_kafka::offset_monitor'
+include_recipe 'optoro_kafka::jmx_exporter'
 
 # override the default action of 'stop' for the untar'ing
 # if kafka is not already installed chef errors out.  Delaying instead.

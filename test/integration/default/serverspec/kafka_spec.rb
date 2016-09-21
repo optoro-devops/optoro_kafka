@@ -16,6 +16,11 @@ describe port(6667) do
   it { should be_listening }
 end
 
+# Kafka Broker API
+describe port(9200) do
+  it { should be_listening }
+end
+
 # Kafka Broker JMX
 describe port(9999) do
   it { should be_listening }

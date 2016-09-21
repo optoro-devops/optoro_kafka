@@ -2,5 +2,7 @@ source 'http://berks-api.optoro.io'
 
 metadata
 
-cookbook 'runit', '= 1.6.0'
-cookbook 'consul', '= 0.7.1'
+cookbook 'optoro_aptly'
+
+# Fix for Berks bug in newest solver
+cookbook 'windows', '~> 1.44.3'
