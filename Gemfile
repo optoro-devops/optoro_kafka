@@ -32,4 +32,5 @@ group :development do
   gem 'right_aws'
   gem 'knife-cookbook-doc', '~> 0.17.0'
   gem 'chef-handler-graphite'
+  gem 'chef-sugar'
 end
