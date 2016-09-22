@@ -1,6 +1,6 @@
 source 'http://gems.optoro.io/'
 
-gem 'berkshelf', '>= 4.0.1'
+gem 'berkshelf', '~> 4.0.1'
 
 group :integration do
   gem 'test-kitchen', '~> 1.4.0'
