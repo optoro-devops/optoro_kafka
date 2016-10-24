@@ -30,8 +30,6 @@ user node['kafka']['user'] do
   supports :manage_home => true
 end
 
-include_recipe 'optoro_kafka::aws' if node['ec2']
-
 include_recipe 'ulimit'
 
 user_ulimit 'kafka' do

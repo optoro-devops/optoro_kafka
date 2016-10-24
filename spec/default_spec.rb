@@ -22,11 +22,6 @@ describe 'optoro_kafka::default' do
         it 'includes cerner_kafka::offset_monitor' do
           expect(chef_run).to include_recipe('cerner_kafka::offset_monitor')
         end
-        it 'includes optoro_kafka::aws when running on EC2' do
-          chef_run.node.automatic['ec2'] = true
-          chef_run.converge(described_recipe)
-          expect(chef_run).to include_recipe('optoro_kafka::aws')
-        end
         it 'should delay in restarting kafka' do
           resource = chef_run.execute('untar kafka binary')
           expect(resource).to notify('service[kafka]').to(:restart).delayed
