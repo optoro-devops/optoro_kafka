@@ -16,9 +16,13 @@ describe port(6667) do
   it { should be_listening }
 end
 
-# Kafka Broker API
+# Kafka JMX Exporter
 describe port(9200) do
   it { should be_listening }
+end
+
+describe service('jmx_exporter') do
+  it { should be_running }
 end
 
 # Kafka Broker JMX
