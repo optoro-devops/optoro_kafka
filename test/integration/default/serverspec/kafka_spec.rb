@@ -17,12 +17,8 @@ describe port(6667) do
 end
 
 # Kafka JMX Exporter
-describe port(9200) do
+describe port(7071) do
   it { should be_listening }
-end
-
-describe service('jmx_exporter') do
-  it { should be_running }
 end
 
 # Kafka Broker JMX
@@ -36,19 +32,7 @@ describe file('/opt/kafka/libs/metrics-logback-3.1.0.jar') do
   it { should be_grouped_into 'kafka' }
 end
 
-describe file('/opt/kafka/libs/metrics-core-2.2.0.jar') do
-  it { should be_file }
-  it { should be_owned_by 'kafka' }
-  it { should be_grouped_into 'kafka' }
-end
-
-describe file('/opt/kafka/libs/metrics-graphite-2.2.0.jar') do
-  it { should be_file }
-  it { should be_owned_by 'kafka' }
-  it { should be_grouped_into 'kafka' }
-end
-
-describe file('/opt/kafka/libs/kafka-graphite-1.0.4.jar') do
+describe file('/opt/kafka/libs/jmx_prometheus_javaagent-0.6.jar') do
   it { should be_file }
   it { should be_owned_by 'kafka' }
   it { should be_grouped_into 'kafka' }

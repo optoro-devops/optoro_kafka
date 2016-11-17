@@ -5,18 +5,12 @@ default['kafka']['brokers'] = [node['fqdn']]
 default['kafka']['lib_jars'] = ['http://search.maven.org/remotecontent?filepath=io/dropwizard/metrics/metrics-logback/3.1.0/metrics-logback-3.1.0.jar',
                                 'https://repo1.maven.org/maven2/org/slf4j/slf4j-nop/1.7.7/slf4j-nop-1.7.7.jar',
                                 'https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.7/slf4j-api-1.7.7.jar',
-                                'https://s3.amazonaws.com/optoro-packages/kafka-graphite-1.0.4.jar',
-                                'https://s3.amazonaws.com/optoro-packages/metrics-core-2.2.0.jar',
-                                'https://s3.amazonaws.com/optoro-packages/metrics-graphite-2.2.0.jar']
+                                'https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.6/jmx_prometheus_javaagent-0.6.jar']
 default['kafka']['zookeepers'] = ['localhost:2181']
 default['kafka']['env_vars']['KAFKA_HEAP_OPTS'] = '"-Xmx1G -Xms1G"'
+default['kafka']['env_vars']['KAFKA_OPTS'] = "\"-javaagent:#{node['kafka']['base_dir']}/kafka/libs/jmx_prometheus_javaagent-0.6.jar=7071:/etc/jmx_exporter/jmx_exporter.yaml\""
 default['kafka']['scala_version'] = '2.10'
 default['kafka']['version'] = '0.8.2.1'
-default['kafka']['server.properties']['kafka.metrics.reporters'] = 'com.criteo.kafka.KafkaGraphiteMetricsReporter'
-default['kafka']['server.properties']['kafka.graphite.metrics.host'] = 'localhost'
-default['kafka']['server.properties']['kafka.graphite.metrics.port'] = '6008'
-default['kafka']['server.properties']['kafka.graphite.metrics.group'] = "#{node['fqdn']}.kafka"
-default['kafka']['server.properties']['kafka.graphite.metrics.reporter.enabled'] = 'true'
 default['kafka']['server.properties']['advertised.host.name'] = node['fqdn']
 default['kafka']['server.properties']['port'] = '6667'
 default['kafka']['offset_monitor']['refresh'] = '1.minutes'
