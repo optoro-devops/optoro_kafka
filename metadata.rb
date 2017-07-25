@@ -15,6 +15,7 @@ depends 'optoro_zookeeper'
 depends 'ulimit'
 depends 'zookeeper'
 depends 'optoro_consul'
+depends 'nssm', '= 2.0.0'
 
 provides 'optoro_kafka::default'
 provides 'optoro_kafka::test'
